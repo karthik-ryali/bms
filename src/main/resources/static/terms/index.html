@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Terms of Service — Banking Management System</title>
+  <link rel="icon" href="/favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900 antialiased flex flex-col justify-between">
+  <!-- Navbar -->
+  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/80 backdrop-blur-md">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+      <div class="flex items-center gap-3">
+        <a id="doc-brand" href="/dashboard/" class="flex items-center gap-2 font-bold text-lg text-slate-900 tracking-tight">
+          <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 text-white font-black text-sm">BMS</span>
+          <span>Banking Management System</span>
+        </a>
+      </div>
+      <nav id="doc-nav" class="flex items-center gap-5 text-sm font-medium text-slate-600">
+        <a href="/dashboard" class="hover:text-slate-900 transition-colors">Dashboard</a>
+        <a href="/transfers" class="hover:text-slate-900 transition-colors">Send Money</a>
+        <a href="/analytics" class="hover:text-slate-900 transition-colors">Analytics</a>
+        <a href="/profile" class="hover:text-slate-900 transition-colors">Profile</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 flex-1">
+    
+        <div class="rounded-2xl border border-slate-200 bg-white p-8 sm:p-10 shadow-sm">
+          <div class="inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">
+            Account Terms
+          </div>
+          <h1 class="mt-4 text-3xl font-bold tracking-tight text-slate-900">Terms of Service</h1>
+          <p class="mt-3 text-sm text-slate-500">Last updated: 2026</p>
+
+          <div class="mt-6 space-y-5 text-sm text-slate-600 leading-relaxed">
+            <p>
+              By accessing or using the Banking Management System (BMS), you agree to comply with the terms and conditions outlined below.
+            </p>
+            <h3 class="text-base font-semibold text-slate-900">1. Virtual Wallet Balance Conservation</h3>
+            <p>
+              Users acknowledge that Virtual Wallets represent allocations of their total account balance. Reallocations, split payments, and transfers are constrained by available funds.
+            </p>
+            <h3 class="text-base font-semibold text-slate-900">2. Account Responsibility</h3>
+            <p>
+              You are responsible for maintaining the confidentiality of your login credentials. BMS records all activity against authenticated accounts.
+            </p>
+            <h3 class="text-base font-semibold text-slate-900">3. Acceptable Use</h3>
+            <p>
+              This banking platform must be used solely for legitimate fund management and transfers. Automated abuse or attempting to bypass balance constraints will result in immediate suspension.
+            </p>
+          </div>
+        </div>
+        
+  </main>
+
+  <!-- Small Clean Footer -->
+  <footer id="doc-footer" class="mt-16 border-t border-gray-200 bg-white py-8 dark:border-gray-800 dark:bg-gray-950">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500 dark:text-gray-400">
+    <div class="flex items-center gap-2">
+      <span class="font-bold text-gray-900 dark:text-white">BMS</span>
+      <span>— Smart Virtual Wallet &amp; Audit Ledger Engine</span>
+    </div>
+    <div class="flex flex-wrap items-center justify-center gap-6 font-medium">
+      <a href="/dashboard" class="hover:text-gray-900 dark:hover:text-white transition-colors">Dashboard</a>
+      <a href="/transfers" class="hover:text-gray-900 dark:hover:text-white transition-colors">Send Money</a>
+      <a href="/analytics" class="hover:text-gray-900 dark:hover:text-white transition-colors">Analytics</a>
+      <a href="/profile" class="hover:text-gray-900 dark:hover:text-white transition-colors">Profile</a>
+      <a href="/about" class="hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
+      <a href="/faq" class="hover:text-gray-900 dark:hover:text-white transition-colors">FAQ</a>
+      <a href="/privacy" class="hover:text-gray-900 dark:hover:text-white transition-colors">Privacy</a>
+      <a href="/terms" class="hover:text-gray-900 dark:hover:text-white transition-colors">Terms</a>
+    </div>
+    <p>&copy; 2026 BMS Bank. All systems operational.</p>
+  </div>
+</footer>
+  <script>
+  (function() {
+    var isAuth = false;
+    try {
+      var raw = sessionStorage.getItem("bms.auth");
+      if (raw) {
+        var a = JSON.parse(raw);
+        if (a && a.username && a.password) isAuth = true;
+      }
+    } catch(e) {}
+    
+    var brand = document.getElementById("doc-brand");
+    var nav = document.getElementById("doc-nav");
+    var footer = document.getElementById("doc-footer");
+    
+    if (brand) brand.href = isAuth ? "/dashboard/" : "/login/";
+    if (nav) {
+      if (isAuth) {
+        nav.innerHTML = '<a href="/dashboard/" class="hover:text-slate-900 transition-colors">Dashboard</a>' +
+          '<a href="/transfers/" class="hover:text-slate-900 transition-colors">Send Money</a>' +
+          '<a href="/analytics/" class="hover:text-slate-900 transition-colors">Analytics</a>' +
+          '<a href="/profile/" class="hover:text-slate-900 transition-colors">Profile</a>';
+      } else {
+        nav.innerHTML = '<a href="/login/" class="hover:text-slate-900 transition-colors">Sign In</a>' +
+          '<a href="/register/" class="rounded-full bg-slate-900 px-4 py-1.5 text-white hover:bg-slate-800 transition-colors">Sign Up</a>';
+      }
+    }
+    if (footer) {
+      if (isAuth) {
+        footer.innerHTML = '<div class="mx-auto max-w-7xl px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500 dark:text-gray-400">' +
+          '<div class="flex items-center gap-2"><span class="font-bold text-gray-900 dark:text-white">BMS</span><span>— Smart Virtual Wallet &amp; Audit Ledger Engine</span></div>' +
+          '<div class="flex flex-wrap items-center justify-center gap-6 font-medium">' +
+          '<a href="/dashboard/" class="hover:text-gray-900 dark:hover:text-white transition-colors">Dashboard</a>' +
+          '<a href="/transfers/" class="hover:text-gray-900 dark:hover:text-white transition-colors">Send Money</a>' +
+          '<a href="/analytics/" class="hover:text-gray-900 dark:hover:text-white transition-colors">Analytics</a>' +
+          '<a href="/profile/" class="hover:text-gray-900 dark:hover:text-white transition-colors">Profile</a>' +
+          '<a href="/about/" class="hover:text-gray-900 dark:hover:text-white transition-colors">About</a>' +
+          '<a href="/faq/" class="hover:text-gray-900 dark:hover:text-white transition-colors">FAQ</a>' +
+          '<a href="/privacy/" class="hover:text-gray-900 dark:hover:text-white transition-colors">Privacy</a>' +
+          '<a href="/terms/" class="hover:text-gray-900 dark:hover:text-white transition-colors">Terms</a>' +
+          '</div><p>&copy; 2026 BMS Bank. All systems operational.</p></div>';
+      } else {
+        footer.innerHTML = '<div class="mx-auto max-w-7xl px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500 dark:text-gray-400">' +
+          '<div class="flex items-center gap-2"><span class="font-bold text-gray-900 dark:text-white">BMS</span><span>— Banking Management System &amp; Virtual Wallet Platform</span></div>' +
+          '<div class="flex flex-wrap items-center justify-center gap-6 font-medium">' +
+          '<a href="/login/" class="hover:text-gray-900 dark:hover:text-white transition-colors">Sign In</a>' +
+          '<a href="/register/" class="hover:text-gray-900 dark:hover:text-white transition-colors">Sign Up</a>' +
+          '<a href="/about/" class="hover:text-gray-900 dark:hover:text-white transition-colors">About</a>' +
+          '<a href="/faq/" class="hover:text-gray-900 dark:hover:text-white transition-colors">FAQ</a>' +
+          '<a href="/privacy/" class="hover:text-gray-900 dark:hover:text-white transition-colors">Privacy</a>' +
+          '<a href="/terms/" class="hover:text-gray-900 dark:hover:text-white transition-colors">Terms</a>' +
+          '</div><p>&copy; 2026 BMS Bank. All rights reserved.</p></div>';
+      }
+    }
+  })();
+  </script>
+</body>
+</html>

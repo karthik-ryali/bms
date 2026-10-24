@@ -1,0 +1,84 @@
+# =========================================================================
+# BMS (Banking Management System) — Git Ignore
+# =========================================================================
+
+# --- Maven & Java Build Output ---
+target/
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Maven release and dependency files
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn-bin/
+
+# --- Logs & JVM Crash Dumps ---
+*.log
+logs/
+hs_err_pid*
+replay_pid*
+
+# --- Scratch & Scratch Scripts ---
+scratch/
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# --- IDEs & Code Editors ---
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+.factorypath
+
+# Visual Studio Code
+.vscode/
+
+# Other Editors
+*.sublime-project
+*.sublime-workspace
+
+# --- OS Noise ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# --- Frontend / Node.js (Local builds & caches) ---
+node_modules/
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# --- Environment & Local Secrets ---
+.env
+.env.local
+.env.*.local
