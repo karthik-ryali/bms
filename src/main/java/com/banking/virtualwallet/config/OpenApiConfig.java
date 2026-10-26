@@ -1,9 +1,12 @@
 package com.banking.virtualwallet.config;
 
+import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,6 +15,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class OpenApiConfig {
+
+    private static final String BASIC_AUTH_SCHEME = "basicAuth";
 
     @Bean
     public OpenAPI virtualWalletOpenAPI() {
@@ -23,6 +28,13 @@ public class OpenApiConfig {
                         .contact(new Contact()
                                 .name("R.V.S.V. Karthik & Team")
                                 .email("karthik@banking.com"))
-                        .license(new License().name("Educational Use").url("https://spring.io")));
+                        .license(new License().name("Educational Use").url("https://spring.io")))
+                .addSecurityItem(new SecurityRequirement().addList(BASIC_AUTH_SCHEME))
+                .components(new Components()
+                        .addSecuritySchemes(BASIC_AUTH_SCHEME, new SecurityScheme()
+                                .name(BASIC_AUTH_SCHEME)
+                                .type(SecurityScheme.Type.HTTP)
+                                .scheme("basic")
+                                .description("Basic Authentication with username and password (e.g. karthik / password123)")));
     }
 }
